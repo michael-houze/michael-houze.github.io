@@ -1,3 +1,7 @@
+// TODO: add responsive css
+// TODO: reduce the chance of back to back duplicate words
+// TODO: hardcode colors
+
 let intervalId: number | undefined;
 let counts: Record<string, number> = {};
 
@@ -9,7 +13,8 @@ function startExercise() {
   const minTimeInterval = parseInt((document.getElementById('minTimeInterval') as HTMLInputElement).value) * 1000;
   const maxTimeInterval = parseInt((document.getElementById('maxTimeInterval') as HTMLInputElement).value) * 1000;
   const wordCount = parseInt((document.getElementById('wordCount') as HTMLInputElement).value);
-  
+  var spokenWords = 0;
+
   if (minTimeInterval > maxTimeInterval) {
     alert('Minimum time interval must be less than maximum time interval.');
     return;
@@ -21,17 +26,24 @@ function startExercise() {
     const wordIndex = Math.floor(Math.random() * wordArray.length);
     const word = wordArray[wordIndex];
     counts[word] = counts[word] ? counts[word] + 1 : 1;
+    spokenWords++;
 
-    if (counts[word] <= wordCount) {
+    if (spokenWords <= wordCount) {
       // Using the Web Speech API to speak the word
-      const utterance = new SpeechSynthesisUtterance(word);
+      var utterance = new SpeechSynthesisUtterance(word);
       console.log(`word: ${word}`)
+      console.log(`word count: ${spokenWords}`)
       speechSynthesis.speak(utterance);
 
       // Check if we've said the word the required number of times
-      if (counts[word] < wordCount) {
+      if (spokenWords < wordCount) {
         scheduleNextWord();
       } else {
+        setTimeout(() => {
+          console.log('This will log after 2 seconds.');
+        }, 2000);
+        var completeUtterance = new SpeechSynthesisUtterance('exercise complete');
+        speechSynthesis.speak(completeUtterance);
         console.log(`Finished saying ${word} ${wordCount} times.`);
       }
     }
