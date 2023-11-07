@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Audio Player</title>
+    <title>OVT Helper</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h1>Word Audio Player</h1>
-    
-    <label for="wordArray">Enter up to 10 words (each word on a new line or separated by space):</label><br>
-    <textarea id="wordArray" name="wordArray" rows="10" cols="30"></textarea><br>
+    <h1>Saccades and Bead String Randomizer</h1>
+
+    <label for="wordSelect">Select words:</label><br>
+    <select id="wordSelect" name="wordSelect" multiple size="4">
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+    </select><br>
 
     <label for="minTimeInterval">Minimum Time Interval Between Word Callouts (1-30 seconds):</label><br>
     <input type="number" id="minTimeInterval" name="minTimeInterval" min="1" max="30" required><br>
@@ -18,7 +25,7 @@
     <label for="maxTimeInterval">Maximum Time Interval Between Word Callouts (1-30 seconds):</label><br>
     <input type="number" id="maxTimeInterval" name="maxTimeInterval" min="1" max="30" required><br>
 
-    <label for="wordCount">Word Count (1-100):</label><br>
+    <label for="wordCount">Number of Repetitions (1-100):</label><br>
     <input type="number" id="wordCount" name="wordCount" min="1" max="100" required><br>
 
     <button onclick="startExercise()">Start</button>
@@ -26,4 +33,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
