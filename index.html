@@ -5,31 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OVT Helper</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="output.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Saccades and Bead String Randomizer</h1>
+<body class="bg-blue-500 h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4">
+        <div class="bg-blue-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h1 class="block text-gray-700 text-xl font-bold mb-2">Saccades and Bead String Randomizer</h1>
 
-    <label for="wordSelect">Select words:</label><br>
-    <select id="wordSelect" name="wordSelect" multiple size="4">
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-        <option value="red">Red</option>
-        <option value="orange">Orange</option>
-    </select><br>
+            <div class="mb-4">  
+                <label for="wordSelect" class="block text-gray-700 text-sm font-bold mb-2">Select colors:</label>
+                <select id="wordSelect" name="wordSelect" multiple size="4" class="form-multiselect block w-full mt-1">
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                </select>
+            </div>
 
-    <label for="minTimeInterval">Minimum Time Interval Between Word Callouts (1-30 seconds):</label><br>
-    <input type="number" id="minTimeInterval" name="minTimeInterval" min="1" max="30" required><br>
+            <div class="mb-4">
+                <label for="minTimeInterval" class="block text-gray-700 text-sm font-bold mb-2">Minimum Time Interval
+                    (1-10 seconds):</label>
+                <input type="number" id="minTimeInterval" name="minTimeInterval" min="1" max="100" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
 
-    <label for="maxTimeInterval">Maximum Time Interval Between Word Callouts (1-30 seconds):</label><br>
-    <input type="number" id="maxTimeInterval" name="maxTimeInterval" min="1" max="30" required><br>
+            <div class="mb-4">
+                <label for="maxTimeInterval" class="block text-gray-700 text-sm font-bold mb-2">Maximum Time Interval
+                    (2-20 seconds):</label>
+                <input type="number" id="maxTimeInterval" name="maxTimeInterval" min="1" max="100" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
 
-    <label for="wordCount">Number of Repetitions (1-100):</label><br>
-    <input type="number" id="wordCount" name="wordCount" min="1" max="100" required><br>
+            <div class="mb-4">
+                <label for="wordCount" class="block text-gray-700 text-sm font-bold mb-2">Word Count (1-30):</label>
+                <input type="number" id="wordCount" name="wordCount" min="1" max="100" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
 
-    <button onclick="startExercise()">Start</button>
-    <button onclick="stopExercise()">Stop</button>
+            <div class="flex items-center justify-between">
+                <button onclick="startExercise()"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Start
+                </button>
+                <button onclick="stopExercise()"
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Stop
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
